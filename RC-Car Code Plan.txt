@@ -1,0 +1,26 @@
+Master - remote control
+Slave - car itself
+**master module is already configured to bind to slave module. 
+
+Code for master: 
+- reads joystick
+- sends message from master to slave according to diff joystick vals
+- fwd is if y is less than 200 ish --> sends ascii '0'
+- bckwd is if y is more than 900 ish --> sends ascii '1'
+- right if x is more than 900 ish --> sends ascii '2'
+-left if x is less than 200 ish --> sends ascii '3' 
+- stay still if any other value --> sends ascii '4'
+
+- master also receives a signal from the slave module if data is sending properly. 
+- if data sends properly --> yellow led lights. 
+- if there is some error --> red led lights. 
+
+Code for slave: 
+- receives ascii characters from master bluetooth module. 
+- according to diff characters, powers motors a certain way. 
+- when receives '0', all motors move fwd. 
+- when receives '1', all motors move bckwd. 
+- when receives '2', only motors on right move fwd. 
+- when receives '3', only motors on left move fwd. 
+-OPTIONAL: has code for beeper and ultrasonic sensor. 
+
